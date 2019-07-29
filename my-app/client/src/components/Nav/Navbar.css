@@ -1,0 +1,35 @@
+.title {
+  margin-top: 15%;
+  font-size: 40px;
+}
+
+.navbar li {
+  display: inline-block;
+  text-align: center;
+}
+
+.logo {
+ margin-right: 8rem;
+}
+
+.search {
+  margin-right: 2rem;
+}
+
+.saved {
+  margin-right: 2rem;
+}
+
+.navbar {
+  background: rgb(0, 0, 0);
+  box-shadow: 0 3px 6px #999, 0 3px 6px #999;
+}
+
+li {
+  color: white;
+  padding: 15px 0;
+}
+
+body {
+  font-size: 24px;
+}
