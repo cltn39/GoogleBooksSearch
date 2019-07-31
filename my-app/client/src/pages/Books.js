@@ -3,24 +3,37 @@ import Jumbotron from "../components/Jumbotron";
 import Containerbox from "../components/Containerbox";
 import API from "../utils/API";
 import DeleteBtn from "../components/DeleteBtn";
+import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
 import { Input, FormBtn } from "../components/Form";
 
 class Books extends Component {
   state = {
-    books: []
+    searchBooks: [],
+    savedBooks: []
   };
 
   componentDidMount() {
-    this.loadBooks();
+    
   }
 
-  loadBooks = () => {
-    API.getBooks()
-      .then(res => this.setState({ books: res.data }))
-      .catch(err => console.log(err));
+  searchBooks = (event) => {
+    event.preventDefault();
+
+    let title = document.querySelector("#searchBar").value.trim()
+    API.getBook(title)
+      .then(res => this.setState({ searchBooks: res.data }))
+      .catch(err => console.error(err));
   };
+
+  saveBooks = (event) => {
+    event.preventDefault();
+
+    API.saveBooks()
+      .then(res => this.setState({ savedBooks: res.data }))
+      .catch(err => console.log(err));
+  }
 
   render() {
     return (
@@ -36,19 +49,20 @@ class Books extends Component {
               <Containerbox>
                 <h3>Book Search</h3>
                 <form>
-                <Input name="title" placeholder="Harry Potter" />
-                <FormBtn>Search</FormBtn>
+                <Input id="searchBar" name="title" placeholder="Harry Potter" />
+                <FormBtn onClick={this.searchBooks}>Search</FormBtn>
                 </form>
               </Containerbox>
           </Col>
           <Col size="md-12 sm-12">
             <Containerbox>
               <h1>Results</h1>
-            {this.state.books.length ? (
+              <br/>
+            {this.state.searchBooks.length ? (
               <List>
-                {this.state.books.map(book => (
+                {this.state.searchBooks.map(book => (
                   <ListItem key={book._id}>
-                    <DeleteBtn >View</DeleteBtn><DeleteBtn>Save</DeleteBtn>
+                    <DeleteBtn >View</DeleteBtn><DeleteBtn onClick={this.saveBooks}>Save</DeleteBtn>
                     <a href={"/books/" + book._id}>
                       <h4>{book.title}</h4>
                     </a>

@@ -9,9 +9,9 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-  findById: function(req, res) {
+  findOne: function(req, res) {
     db.Book
-      .findById(req.params.id)
+      .findOneAndUpdate({title: "Coraline"})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
