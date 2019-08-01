@@ -12,14 +12,19 @@ class Saved extends Component {
   };
 
   componentDidMount() {
-    this.loadBooks();
+    this.handleLoadBooks();
   }
 
-  loadBooks = () => {
-    API.getBooks()
-      .then(res => this.setState({ savedBooks: res.data }))
-      .catch(err => console.log(err));
-  };
+  handleLoadBooks = () =>
+  API.getBooks()
+          .then(res => this.setState({ savedBooks: res.data }))
+          .catch(err => console.log(err))
+
+  // handleDeleteButton = id => {
+  //   API.deleteBook(id)
+  //   .then(res => this.componentDidMount())
+  //   .catch(err => console.log(err))
+  // }
 
   render() {
     return (
@@ -39,9 +44,9 @@ class Saved extends Component {
             {this.state.savedBooks.length ? (
               <List>
                 {this.state.savedBooks.map(book => (
-                  <ListItem key={book._id}>
-                    <FunctionBtn >Function</FunctionBtn><FunctionBtn>View</FunctionBtn>
-                    <a href={"/books/" + book._id}>
+                  <ListItem key={book.id}>
+                    <FunctionBtn >Delete</FunctionBtn><FunctionBtn>View</FunctionBtn>
+                    <a href={"/books/" + book.id}>
                       <h4>{book.title}</h4>
                     </a>
                       <h5>{book.author || book.authors}</h5>
@@ -51,7 +56,13 @@ class Saved extends Component {
                 ))}
               </List>
             ) : (
-              <h3>No Results to Display</h3>
+              <List>
+                  <ListItem>
+                    <div className="article">
+                      <h3>No Results to Display</h3>
+                    </div>
+                  </ListItem>
+                </List>
             )}
             </Containerbox>
           </Col>
