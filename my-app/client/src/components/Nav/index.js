@@ -8,9 +8,9 @@ class Nav extends Component {
       <nav className="navbar navbar-default navbar-fixed-top">
         <ul>
           <li className="logo">
-            <a href="/books">Google Books</a>
+            <a href="/">Google Books</a>
           </li>
-          <li className="search"><Link to={"/books"}>Search</Link></li>
+          <li className="search"><Link to={"/"}>Search</Link></li>
           <li className="saved"><Link to={"/Saved"}>Saved</Link></li>
         </ul>
       </nav>

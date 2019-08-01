@@ -1,7 +1,8 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const routes = require("./routes");
-const PORT = process.env.PORT || 3002;
+
+const PORT = process.env.PORT || 3001;
 const app = express();
 
 // Define middleware here
@@ -15,7 +16,7 @@ if (process.env.NODE_ENV === "production") {
 app.use(routes);
 
 // Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/reactreadinglist", { useNewUrlParser: true });
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/googleBooks", { useNewUrlParser: true });
 
 // Start the API server
 app.listen(PORT, () => {

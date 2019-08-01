@@ -2,11 +2,9 @@ import React, { Component } from "react";
 import Jumbotron from "../components/Jumbotron";
 import Containerbox from "../components/Containerbox";
 import API from "../utils/API";
-import DeleteBtn from "../components/DeleteBtn";
-import { Link } from "react-router-dom";
+import FunctionBtn from "../components/FunctionBtn";
 import { Col, Row, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
-import { Input, FormBtn } from "../components/Form";
 
 class Saved extends Component {
   state = {
@@ -42,7 +40,7 @@ class Saved extends Component {
               <List>
                 {this.state.savedBooks.map(book => (
                   <ListItem key={book._id}>
-                    <DeleteBtn >Delete</DeleteBtn><DeleteBtn>View</DeleteBtn>
+                    <FunctionBtn >Function</FunctionBtn><FunctionBtn>View</FunctionBtn>
                     <a href={"/books/" + book._id}>
                       <h4>{book.title}</h4>
                     </a>
