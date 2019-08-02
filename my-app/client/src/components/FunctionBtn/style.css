@@ -1,6 +1,5 @@
-.delete-btn {
+.btn {
   float: right;
-  font-size: 10px;
-  color: black;
+  font-size: 14px;
   margin: 3px
 }

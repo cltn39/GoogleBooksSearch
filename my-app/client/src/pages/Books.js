@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Jumbotron from "../components/Jumbotron";
 import Containerbox from "../components/Containerbox";
 import API from "../utils/API";
-import FunctionBtn from "../components/FunctionBtn";
+import { FunctionBtn, ViewBtn } from "../components/FunctionBtn";
 import { Col, Row, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
 import { SearchForm } from "../components/Form";
@@ -54,17 +54,15 @@ class Books extends Component {
     let savedBooks = this.state.searchBooks.filter(
       book => book.id === event.target.id
     );
+    console.log(event.target.id);
     savedBooks = savedBooks[0];
     API.saveBook(savedBooks)
       .then(this.setState({ message: alert("Your book is saved") }))
       .catch(err => console.log(err));
   };
 
-  saveBooks = event => {
-    event.preventDefault();
-    this.setState({ savedBooks: event.target });
-    console.log(this.state.savedBooks);
-  };
+  handleViewButton = event => {
+  }
 
   render() {
     return (
@@ -96,8 +94,10 @@ class Books extends Component {
                 <List>
                   {this.state.searchBooks.map(book => (
                     <ListItem key={book.id}>
-                      <FunctionBtn>View</FunctionBtn>
-                      <FunctionBtn handleButton={this.handleSavedButton} >Save</FunctionBtn>
+                      <a href={book.link} target="_blank">
+                      <ViewBtn handleButton={this.handleViewButton}>View</ViewBtn>
+                      </a>
+                      <FunctionBtn id={book.id} handleButton={this.handleSavedButton} >Save</FunctionBtn>
                       <a href={"/books/" + book._id}>
                         <h4>{book.title}</h4>
                       </a>

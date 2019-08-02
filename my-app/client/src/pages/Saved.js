@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Jumbotron from "../components/Jumbotron";
 import Containerbox from "../components/Containerbox";
 import API from "../utils/API";
-import FunctionBtn from "../components/FunctionBtn";
+import { FunctionBtn, ViewBtn } from "../components/FunctionBtn";
 import { Col, Row, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
 
@@ -20,11 +20,14 @@ class Saved extends Component {
           .then(res => this.setState({ savedBooks: res.data }))
           .catch(err => console.log(err))
 
-  // handleDeleteButton = id => {
-  //   API.deleteBook(id)
-  //   .then(res => this.componentDidMount())
-  //   .catch(err => console.log(err))
-  // }
+  handleDeleteButton = id => {
+    API.deleteBook(id)
+    .then(res => this.componentDidMount())
+    .catch(err => console.log(err))
+  }
+
+  handleViewButton = event => {
+  }
 
   render() {
     return (
@@ -45,7 +48,10 @@ class Saved extends Component {
               <List>
                 {this.state.savedBooks.map(book => (
                   <ListItem key={book.id}>
-                    <FunctionBtn >Delete</FunctionBtn><FunctionBtn>View</FunctionBtn>
+                    <FunctionBtn handleButton={this.handleDeleteButton}> Delete</FunctionBtn>
+                    <a href={book.link} target="_blank">
+                    <ViewBtn>View</ViewBtn>
+                    </a>
                     <a href={"/books/" + book.id}>
                       <h4>{book.title}</h4>
                     </a>
