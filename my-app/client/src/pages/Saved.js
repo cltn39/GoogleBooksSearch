@@ -35,8 +35,16 @@ class Saved extends Component {
         <Row>
           <Col size="md-12 sm-12">
             <Header>
-              <h1>(React) Google Books Search</h1>
-              <p>Search for and Save Books of Interest</p>
+            <h1 className="display-3">
+                <span style={{ color: "royalblue" }}>G</span>
+                <span style={{ color: "tomato" }}>o</span>
+                <span style={{ color: "orange" }}>o</span>
+                <span style={{ color: "royalblue" }}>g</span>
+                <span style={{ color: "seagreen" }}>l</span>
+                <span style={{ color: "tomato" }}>e </span>
+                 Books Search
+              </h1>
+              <p className="lead mb-0">Save Books of Interest</p>
             </Header>
           </Col>
           <Col size="md-12 sm-12">

@@ -79,7 +79,7 @@ class Books extends Component {
                 <span style={{ color: "tomato" }}>e </span>
                  Books Search
               </h1>
-              <p className="lead mb-0">Search for and Save Books of Interest</p>
+              <p className="lead mb-0">Search Books of Interest</p>
             </Header>
           </Col>
           <Col size="md-12 sm-12">
