@@ -6,7 +6,7 @@ import "./style.css";
 
 export function FunctionBtn(props) {
   return (
-    <button className="btn btn-primary" onClick={(event) => props.handleButton(event)} {...props} tabIndex="0">
+    <button className="btn btn-primary" onClick={props.handleButton} {...props} tabIndex="0">
       {props.children}
     </button>
   );
@@ -14,7 +14,7 @@ export function FunctionBtn(props) {
 
 export function ViewBtn(props) {
   return (
-    <button className="btn btn-primary" onClick={(event) => props.handleButton(event)} {...props} tabIndex="0">
+    <button className="btn btn-primary" onClick={props.handleButton} {...props} tabIndex="0">
       {props.children}
     </button>
   );

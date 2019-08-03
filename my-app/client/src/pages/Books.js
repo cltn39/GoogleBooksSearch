@@ -32,7 +32,7 @@ class Books extends Component {
           let results = res.data.items;
           results = results.map(result => {
             result = {
-              key: result.id,
+              // key: result.id,
               id: result.id,
               title: result.volumeInfo.title,
               author: result.volumeInfo.authors,
@@ -55,6 +55,7 @@ class Books extends Component {
       book => book.id === event.target.id
     );
     console.log(event.target.id);
+    console.log("log for savedBooks :" +savedBooks);
     savedBooks = savedBooks[0];
     API.saveBook(savedBooks)
       .then(this.setState({ message: alert("Your book is saved") }))
@@ -95,9 +96,9 @@ class Books extends Component {
                   {this.state.searchBooks.map(book => (
                     <ListItem key={book.id}>
                       <a href={book.link} target="_blank">
-                      <ViewBtn handleButton={this.handleViewButton}>View</ViewBtn>
+                      <ViewBtn onClick={this.handleViewButton}>View</ViewBtn>
                       </a>
-                      <FunctionBtn id={book.id} handleButton={this.handleSavedButton} >Save</FunctionBtn>
+                      <FunctionBtn id={book.id} onClick={this.handleSavedButton} >Save</FunctionBtn>
                       <a href={"/books/" + book._id}>
                         <h4>{book.title}</h4>
                       </a>

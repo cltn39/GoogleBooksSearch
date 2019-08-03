@@ -16,10 +16,16 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   create: function(req, res) {
+    console.log("test");
+    delete req.body.id;
+    console.log("author:" + Array.isArray(req.body.author));
+    console.log("request object key for req.body: " + Object.keys(req.body));
     db.Book
       .create(req.body)
       .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
+      .catch(err => {
+        console.log(err);
+        res.status(422).json(err)});
   },
   update: function(req, res) {
     db.Book

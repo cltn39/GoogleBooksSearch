@@ -47,12 +47,12 @@ class Saved extends Component {
             {this.state.savedBooks.length ? (
               <List>
                 {this.state.savedBooks.map(book => (
-                  <ListItem key={book.id}>
-                    <FunctionBtn handleButton={this.handleDeleteButton}> Delete</FunctionBtn>
+                  <ListItem key={book._id}>
+                    <FunctionBtn onClick={() => this.handleDeleteButton(book._id)} > Delete</FunctionBtn>
                     <a href={book.link} target="_blank">
                     <ViewBtn>View</ViewBtn>
                     </a>
-                    <a href={"/books/" + book.id}>
+                    <a href={"/books/" + book._id}>
                       <h4>{book.title}</h4>
                     </a>
                       <h5>{book.author || book.authors}</h5>
