@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Jumbotron from "../components/Jumbotron";
+import { Jumbotron, Header } from "../components/Jumbotron";
 import Containerbox from "../components/Containerbox";
 import API from "../utils/API";
 import { FunctionBtn, ViewBtn } from "../components/FunctionBtn";
@@ -55,25 +55,32 @@ class Books extends Component {
       book => book.id === event.target.id
     );
     console.log(event.target.id);
-    console.log("log for savedBooks :" +savedBooks);
+    console.log("log for savedBooks :" + savedBooks);
     savedBooks = savedBooks[0];
     API.saveBook(savedBooks)
       .then(this.setState({ message: alert("Your book is saved") }))
       .catch(err => console.log(err));
   };
 
-  handleViewButton = event => {
-  }
+  handleViewButton = event => {};
 
   render() {
     return (
       <Container fluid>
         <Row>
           <Col size="md-12 sm-12">
-            <Jumbotron>
-              <h1>(React) Google Books Search</h1>
-              <p>Search for and Save Books of Interest</p>
-            </Jumbotron>
+            <Header>
+              <h1 className="display-3">
+                <span style={{ color: "royalblue" }}>G</span>
+                <span style={{ color: "tomato" }}>o</span>
+                <span style={{ color: "orange" }}>o</span>
+                <span style={{ color: "royalblue" }}>g</span>
+                <span style={{ color: "seagreen" }}>l</span>
+                <span style={{ color: "tomato" }}>e </span>
+                 Books Search
+              </h1>
+              <p className="lead mb-0">Search for and Save Books of Interest</p>
+            </Header>
           </Col>
           <Col size="md-12 sm-12">
             <Containerbox>
@@ -96,9 +103,14 @@ class Books extends Component {
                   {this.state.searchBooks.map(book => (
                     <ListItem key={book.id}>
                       <a href={book.link} target="_blank">
-                      <ViewBtn onClick={this.handleViewButton}>View</ViewBtn>
+                        <ViewBtn onClick={this.handleViewButton}>View</ViewBtn>
                       </a>
-                      <FunctionBtn id={book.id} onClick={this.handleSavedButton} >Save</FunctionBtn>
+                      <FunctionBtn
+                        id={book.id}
+                        onClick={this.handleSavedButton}
+                      >
+                        Save
+                      </FunctionBtn>
                       <a href={"/books/" + book._id}>
                         <h4>{book.title}</h4>
                       </a>

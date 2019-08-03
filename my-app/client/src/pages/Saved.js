@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Jumbotron from "../components/Jumbotron";
+import { Jumbotron, Header} from "../components/Jumbotron";
 import Containerbox from "../components/Containerbox";
 import API from "../utils/API";
 import { FunctionBtn, ViewBtn } from "../components/FunctionBtn";
@@ -34,10 +34,10 @@ class Saved extends Component {
       <Container fluid>
         <Row>
           <Col size="md-12 sm-12">
-            <Jumbotron>
+            <Header>
               <h1>(React) Google Books Search</h1>
               <p>Search for and Save Books of Interest</p>
-            </Jumbotron>
+            </Header>
           </Col>
           <Col size="md-12 sm-12">
             <Containerbox>
