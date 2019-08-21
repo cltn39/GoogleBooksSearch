@@ -15,6 +15,10 @@ As a user, you can save books to review or save them for later.
 - [x] Movie header for added effect!
 - [x] Fully utilizes advantages of React.
 
+## Used Packages
+
+- Create-react
+- react-onlyif
 
 ## Demo:
 
